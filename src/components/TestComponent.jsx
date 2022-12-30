@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { AlerComponent } from "./AlerComponent";
+import React, { useEffect, useState } from 'react'
+import { AlerComponent } from './AlerComponent'
 
 export const TestComponent = () => {
-  const [user, setUser] = useState("cin");
-  const [date, setDate] = useState("01-01-1996");
-  const [counter, setCounter] = useState(0);
+  const [user, setUser] = useState('cin')
+  const [date, setDate] = useState('01-01-1996')
+  const [counter, setCounter] = useState(0)
 
   const modUser = (e) => {
-    setUser(e.target.value);
-  };
+    setUser(e.target.value)
+  }
   const changeDate = (e) => {
-    setDate(Date.now());
-  };
+    setDate(Date.now())
+  }
   useEffect(() => {
-    console.log("youve loaded");
-  }, []);
+    console.log('youve loaded')
+  }, [])
 
   useEffect(() => {
-    setCounter(counter + 1);
-    console.log("youve changed the user" + counter);
-  }, [user]);
+    setCounter(counter + 1)
+    console.log('youve changed the user' + counter)
+  }, [user])
 
   return (
     <div>
@@ -27,12 +27,12 @@ export const TestComponent = () => {
       <strong className={counter >= 10 ? 'label' : 'label-red'}>{user}</strong>
       <hr />
       <strong>{date}</strong>
-      <p action="">
-        <input type="text" onChange={modUser} placeholder="change name" />
+      <p action=''>
+        <input type='text' onChange={modUser} placeholder='change name' />
       </p>
       <button onClick={changeDate}>change date!</button>
-    {counter >= 15 && <AlerComponent />}
-    {user == 'cintia' && <AlerComponent />}
+      {counter >= 15 && <AlerComponent />}
+      {user == 'cintia' && <AlerComponent />}
     </div>
-  );
-};
+  )
+}

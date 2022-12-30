@@ -1,42 +1,40 @@
 import React, { useEffect, useState } from 'react'
 
-
 export const FetchComponent = () => {
-    const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([])
 
-
-const getUsuariosAjaxPms = () => {
+  const getUsuariosAjaxPms = () => {
     fetch('https://reqres.in/api/users?page=2')
-    .then(res => res.json()) //convirtiendo la respuesta json a un objeto
-    .then(res_final => {
+      .then(res => res.json()) // convirtiendo la respuesta json a un objeto
+      .then(res_final => {
         setUsers(res_final.data)
-        console.log('USERS', users);
-    },
-    error => {
-        console.log(error);
-    })
-} 
+        console.log('USERS', users)
+      },
+      error => {
+        console.log(error)
+      })
+  }
 
-const getUsuariosAjaxAsyncAw = async() => {
-const request = await  fetch('https://reqres.in/api/users?page=1')
-const {data} = await request.json()
-setUsers(data)
-}
+  const getUsuariosAjaxAsyncAw = async () => {
+    const request = await fetch('https://reqres.in/api/users?page=1')
+    const { data } = await request.json()
+    setUsers(data)
+  }
 
-/* useEffect(() => {
+  /* useEffect(() => {
     getUsuariosAjaxPms()
 }, []) */
 
-useEffect(() => {
+  useEffect(() => {
     getUsuariosAjaxAsyncAw()
-}, [])
+  }, [])
 
   return (
     <div>
-        <h2>Listado de usuarios via Ajax</h2>
-{users.map(user=> {
-    return <li key={user.id}>{user.email}</li>
-})}
+      <h2>Listado de usuarios via Ajax</h2>
+      {users.map(user => {
+        return <li key={user.id}>{user.email}</li>
+      })}
     </div>
   )
 }
